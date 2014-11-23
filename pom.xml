@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.gmics.webmanager</groupId>
 	<artifactId>videoplayer</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.3</version>
 	<properties>
 		<webmanager.wcb.min-version>9.5</webmanager.wcb.min-version>
 		<webmanager.wcb.max-version>10.0</webmanager.wcb.max-version>
