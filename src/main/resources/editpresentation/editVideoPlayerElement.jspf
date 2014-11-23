@@ -1,0 +1,129 @@
+<%@ page language="java" session="false" buffer="none"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/taglib/spring"%>
+<%@ taglib prefix="wmedit" uri="http://www.gx.nl/taglib/wmedit"%>
+
+<c:set var="element" value="${editcontext.baseObject}" />
+
+<div class="wm_style">
+    <fmt:message key="element.leadtext" />
+    <p />
+
+    <table class="widgetgrid">
+        <tr>
+            <td width="20%" class="label"><fmt:message key="element.videourl" /></td>
+            <td width="80%" class="textfield"><wmedit:input path="videoURL" style="width:350px" /></td>
+        </tr>
+        <tr>
+            <td class="label"><fmt:message key="element.imageurl" /></td>
+            <td class="textfield"><wmedit:input path="imageURL" style="width:350px" /></td>
+        </tr>
+        <tr>
+            <td class="label"><fmt:message key="element.imagealt" /></td>
+            <td class="textfield"><wmedit:input path="imageAlt" style="width:350px" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="layout" width="100%">
+                <strong><fmt:message key="element.audiodescription.title" /></strong>
+                <table class="widgetgrid" cellspacing="0" width="100%" style="table-layout: fixed;">
+                    <tr>
+                        <td width="20%"></td>
+                        <td width="80%" class="checkbox">
+                            <wmedit:onOffCheckbox path="audioDescriptionEnabled" />
+                            <label for="FBOMap['${element.UUID}'].audioDescriptionEnabled"><fmt:message key="element.audiodescription.check" /></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><fmt:message key="element.audiodescription.file" /></td>
+                        <td class="textfield"><wmedit:input path="audioDescriptionFile" style="width:350px" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="layout" width="100%">
+                <strong><fmt:message key="element.captions.title" /></strong>
+                <table class="widgetgrid" cellspacing="0" width="100%" style="table-layout: fixed;">
+                    <tr>
+                        <td width="20%"></td>
+                        <td width="80%" class="checkbox">
+                            <wmedit:onOffCheckbox path="captionsEnabled" />
+                            <label for="FBOMap['${element.UUID}'].captionsEnabled"><fmt:message key="element.captions.check" /></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><fmt:message key="element.captions.labels" /></td>
+                        <td class="textfield"><wmedit:input path="captionsLabels" style="width:350px" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><fmt:message key="element.captions.files" /></td>
+                        <td class="textfield"><wmedit:input path="captionsFiles" style="width:350px" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <tr>
+            <td colspan="2" class="layout" width="100%">
+                <strong><fmt:message key="element.gapro.title" /></strong>
+                <table class="widgetgrid" cellspacing="0" width="100%" style="table-layout: fixed;">
+                    <tr>
+                        <td width="20%"></td>
+                        <td width="80%" class="checkbox">
+                            <wmedit:onOffCheckbox path="gaproEnabled" id="FBOMap['${element.UUID}'].gaproEnabled" />
+                            <label for="FBOMap['${element.UUID}'].gaproEnabled"><fmt:message key="element.gapro.check" /></label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="layout" width="100%">
+                <strong><fmt:message key="element.downloads.title" /></strong>
+                <table class="widgetgrid" cellspacing="0" width="100%" style="table-layout: fixed;">
+                    <tr>
+                        <td width="20%"></td>
+                        <td width="80%" class="checkbox">
+                            <wmedit:onOffCheckbox path="downloadsEnabled" id="FBOMap['${element.UUID}'].downloadsEnabled" />
+                            <label for="FBOMap['${element.UUID}'].downloadsEnabled"><fmt:message key="element.downloads.check" /></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><fmt:message key="element.downloadtitle" /></td>
+                        <td class="textfield"><wmedit:input path="downloadTitle" style="width:350px" /></td>
+                    </tr>
+                    
+                    <c:forEach var="count" begin="1" end="6">
+                    <tr>
+                        <td class="layout" colspan="2">
+                            <div class="presentation">
+                            <table class="widgetgrid" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                    <tr>
+                                        <td width="20%" class="label"><fmt:message key="element.downloadstext" /></td>
+                                        <td width="80%" class="textfield">
+                                            <wmedit:input path="downloadsText${count}" style="width:350px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><fmt:message key="element.downloadsmeta" /></td>
+                                        <td class="textfield">
+                                            <wmedit:input path="downloadsMeta${count}" style="width:350px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><fmt:message key="element.downloadsurl" /></td>
+                                        <td class="textfield">
+                                            <wmedit:input path="downloadsURL${count}" style="width:350px" />
+                                        </td>
+                                    </tr>
+                            </table>
+                            </div>
+                        </td>
+                    </tr>
+                    </c:forEach>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

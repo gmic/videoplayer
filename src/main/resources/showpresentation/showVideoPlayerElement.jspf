@@ -1,0 +1,74 @@
+<%@ page language="java" session="false" buffer="none"  %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.gx.nl/taglib/wm" prefix="wm" %>
+
+<c:set var="element" value="${presentationcontext.element}" />
+
+<c:set var="urlStatic" value="${presentationcontext.website.staticFilesUrl}/static" />
+
+<wm:presentationProperty var="width" label="width" />
+<wm:presentationProperty var="height" label="height" />
+<wm:presentationProperty var="downloadClass" label="downloadClass" />
+
+    <div id="movie-contentblock">
+        <img src="${element.imageURL}" alt="${element.imageAlt}" width="${width}" height="${height}"/>
+    </div>
+    <c:if test="${element.downloadsEnabled}">
+    <div class="${downloadClass}">
+        <h3><a href="#">${element.downloadTitle}</a></h3>
+        <div>
+            <ul>
+              <c:if test="${element.downloadsURL1 != ''}">
+                <li><a href="${element.downloadsURL1}">${element.downloadsText1}<span class="meta">${element.downloadsMeta1}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL2 != ''}">
+                <li><a href="${element.downloadsURL2}">${element.downloadsText2}<span class="meta">${element.downloadsMeta2}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL3 != ''}">
+                <li><a href="${element.downloadsURL3}">${element.downloadsText3}<span class="meta">${element.downloadsMeta3}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL4 != ''}">
+                <li><a href="${element.downloadsURL4}">${element.downloadsText4}<span class="meta">${element.downloadsMeta4}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL5 != ''}">
+                <li><a href="${element.downloadsURL5}">${element.downloadsText5}<span class="meta">${element.downloadsMeta5}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL6 != ''}">
+                <li><a href="${element.downloadsURL6}">${element.downloadsText6}<span class="meta">${element.downloadsMeta6}</span></a></li>
+              </c:if>
+            </ul>
+        </div>
+    </div>
+    </c:if>
+
+    <script type="text/javascript" src="${urlStatic}/videoplayer/jwplayer/jwplayer.js"></script>
+    <script type="text/javascript">
+        jwplayer("movie-contentblock").setup({
+            file: "${element.videoURL}",
+            image: "${element.imageURL}",
+            height: ${height},
+            width: ${width},
+            modes: [
+                { type: "flash", src: "${urlStatic}/videoplayer/jwplayer/player.swf" },
+                { type: "html5" },
+                { type: "download" }
+            ],
+            controlbar: 'bottom',
+            <c:if test="${element.audioDescriptionEnabled || element.captionsEnabled || element.gaproEnabled}">
+            plugins: {
+            	<c:if test="${element.gaproEnabled}">
+                "gapro-2": {}<c:if test="${element.captionsEnabled}">,</c:if></c:if>
+                <c:if test="${element.captionsEnabled}">
+                "captions-2": {
+                    files: "${element.captionsFiles}",
+                    labels: "${element.captionsLabels}"
+                }<c:if test="${element.audioDescriptionEnabled}">,</c:if></c:if>
+                <c:if test="${element.audioDescriptionEnabled}">
+                "audiodescription-2": {
+                    file: "${element.audioDescriptionFile}"
+                }</c:if>
+            },
+            </c:if>
+            dock: false
+        });
+    </script>

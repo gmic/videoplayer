@@ -1,0 +1,28 @@
+<presentation>
+  <name>videoplayer VideoPlayerElement</name>
+  <display-name>videoplayer presentation</display-name>
+  <scope>VideoPlayerElement_videoplayer</scope>
+  
+  <property>
+    <propertyname>width</propertyname>
+    <displayname>width</displayname>
+    <datatype>String</datatype>
+    <default>495</default>
+  </property>
+  
+  <property>
+    <propertyname>height</propertyname>
+    <displayname>height</displayname>
+    <datatype>String</datatype>
+    <default>278</default>
+  </property>
+  
+  <property>
+    <propertyname>downloadClass</propertyname>
+    <displayname>downloadClass</displayname>
+    <datatype>String</datatype>
+    <default>movie-downloadblock bh-accordion</default>
+  </property>
+  
+  
+</presentation>
