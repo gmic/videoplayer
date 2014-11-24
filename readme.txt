@@ -4,8 +4,8 @@
 										
                                     videoplayer
 
-Release 1.0.1
-Last revised 2 May 2012
+Release 1.0.4
+Last revised 24 November 2014
 -------------------------
 
 ====================================================================
@@ -26,7 +26,7 @@ CONTENTS
 -1- LICENSE AND COPYRIGHT 
 ====================================================================
 
-	(c) 2012 GMICS B.V. All rights reserved.
+	(c) 2014 GMICS B.V. All rights reserved.
 
 ====================================================================
 -2- INTRODUCTION 
