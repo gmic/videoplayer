@@ -3,8 +3,8 @@
 										
                                       videoplayer
 
-Release 1.0.1
-Last revised 2 May 2012
+Release 1.0.4
+Last revised 24 November 2014
 ------------------------------------
 
 ====================================================================
@@ -20,6 +20,18 @@ CONTENTS
 ====================================================================
 
 The following changes have been made:
+
+1.0.4
+-----
+- Merged 1.0.2 and 1.0.3 version
+
+1.0.3
+-----
+- Patched 1.0.1 version for firefox bug
+
+1.0.2
+-----
+- Added support for JWPlayer 6
 
 1.0.1
 -----

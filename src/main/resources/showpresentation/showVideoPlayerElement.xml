@@ -7,14 +7,14 @@
     <propertyname>width</propertyname>
     <displayname>width</displayname>
     <datatype>String</datatype>
-    <default>495</default>
+    <default>420</default>
   </property>
   
   <property>
     <propertyname>height</propertyname>
     <displayname>height</displayname>
     <datatype>String</datatype>
-    <default>278</default>
+    <default>260</default>
   </property>
   
   <property>
@@ -24,5 +24,25 @@
     <default>movie-downloadblock bh-accordion</default>
   </property>
   
+  <property>
+    <propertyname>uploadPrefix</propertyname>
+    <displayname>uploadPrefix</displayname>
+    <datatype>String</datatype>
+    <default></default>
+  </property>
+    
+  <property>
+    <propertyname>version</propertyname>
+    <displayname>version</displayname>
+    <datatype>String</datatype>
+    <default>5</default>
+  </property>
+  
+  <property>
+    <propertyname>key</propertyname>
+    <displayname>key</displayname>
+    <datatype>String</datatype>
+    <default></default>
+  </property>
   
 </presentation>

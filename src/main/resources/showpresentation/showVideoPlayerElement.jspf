@@ -1,6 +1,7 @@
 <%@ page language="java" session="false" buffer="none"  %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.gx.nl/taglib/wm" prefix="wm" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:set var="element" value="${presentationcontext.element}" />
 
@@ -9,9 +10,62 @@
 <wm:presentationProperty var="width" label="width" />
 <wm:presentationProperty var="height" label="height" />
 <wm:presentationProperty var="downloadClass" label="downloadClass" />
+<wm:presentationProperty var="uploadPrefix" label="uploadPrefix" />
+<wm:presentationProperty var="version" label="version" />
+<wm:presentationProperty var="key" label="key" />
 
-    <div id="movie-contentblock">
-        <img src="${element.imageURL}" alt="${element.imageAlt}" width="${width}" height="${height}"/>
+<c:set var="wmElement" value="${presentationcontext.element}" />
+
+<c:set var="videoURL" value="${element.videoURL}" />
+<c:set var="imageURL" value="${element.imageURL}" />
+<c:set var="downloadsURL1" value="${element.downloadsURL1}" />
+<c:set var="downloadsURL2" value="${element.downloadsURL2}" />
+<c:set var="downloadsURL3" value="${element.downloadsURL3}" />
+<c:set var="downloadsURL4" value="${element.downloadsURL4}" />
+<c:set var="downloadsURL5" value="${element.downloadsURL5}" />
+<c:set var="downloadsURL6" value="${element.downloadsURL6}" />
+<c:set var="captionsFiles" value="${element.captionsFiles}" />
+<c:set var="audioDescriptionFile" value="${element.audioDescriptionFile}" />
+
+
+<c:if test="${fn:length(uploadPrefix) > 0}">
+    <c:if test="${fn:length(element.videoURL) > 0 && !fn:startsWith(element.videoURL, 'http')}">
+       <c:set var="videoURL" value="${uploadPrefix}${element.videoURL}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL1) > 0 && !fn:startsWith(element.downloadsURL1, 'http')}">
+       <c:set var="downloadsURL1" value="${uploadPrefix}${element.downloadsURL1}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL2) > 0 && !fn:startsWith(element.downloadsURL2, 'http')}">
+       <c:set var="downloadsURL2" value="${uploadPrefix}${element.downloadsURL2}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL3) > 0 && !fn:startsWith(element.downloadsURL3, 'http')}">
+       <c:set var="downloadsURL3" value="${uploadPrefix}${element.downloadsURL3}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL4) > 0 && !fn:startsWith(element.downloadsURL4, 'http')}">
+       <c:set var="downloadsURL4" value="${uploadPrefix}${element.downloadsURL4}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL5) > 0 && !fn:startsWith(element.downloadsURL5, 'http')}">
+       <c:set var="downloadsURL5" value="${uploadPrefix}${element.downloadsURL5}" />
+    </c:if>
+    <c:if test="${fn:length(element.downloadsURL6) > 0 && !fn:startsWith(element.downloadsURL6, 'http')}">
+       <c:set var="downloadsURL6" value="${uploadPrefix}${element.downloadsURL6}" />
+    </c:if>
+    <c:if test="${fn:length(element.imageURL) > 0 && !fn:startsWith(element.imageURL, 'http')}">
+       <c:set var="imageURL" value="${uploadPrefix}${element.imageURL}" />
+    </c:if>
+    <c:if test="${fn:length(element.captionsFiles) > 0 && !fn:startsWith(element.captionsFiles, 'http')}">
+       <c:set var="captionsFiles" value="${uploadPrefix}${element.captionsFiles}" />
+    </c:if>
+    <c:if test="${fn:length(element.audioDescriptionFile) > 0 && !fn:startsWith(element.audioDescriptionFile, 'http')}">
+       <c:set var="audioDescriptionFile" value="${uploadPrefix}${element.audioDescriptionFile}" />
+    </c:if>
+</c:if>
+
+<c:choose>
+  <c:when test="${version == '6'}">
+      
+    <div id="movie-contentblock-${wmElement.id}">
+        <img src="${imageURL}" alt="${element.imageAlt}" width="${width}" height="${height}"/>
     </div>
     <c:if test="${element.downloadsEnabled}">
     <div class="${downloadClass}">
@@ -19,22 +73,82 @@
         <div>
             <ul>
               <c:if test="${element.downloadsURL1 != ''}">
-                <li><a href="${element.downloadsURL1}">${element.downloadsText1}<span class="meta">${element.downloadsMeta1}</span></a></li>
+                <li><a href="${downloadsURL1}">${element.downloadsText1}<span class="meta">${element.downloadsMeta1}</span></a></li>
               </c:if>
               <c:if test="${element.downloadsURL2 != ''}">
-                <li><a href="${element.downloadsURL2}">${element.downloadsText2}<span class="meta">${element.downloadsMeta2}</span></a></li>
+                <li><a href="${downloadsURL2}">${element.downloadsText2}<span class="meta">${element.downloadsMeta2}</span></a></li>
               </c:if>
               <c:if test="${element.downloadsURL3 != ''}">
-                <li><a href="${element.downloadsURL3}">${element.downloadsText3}<span class="meta">${element.downloadsMeta3}</span></a></li>
+                <li><a href="${downloadsURL3}">${element.downloadsText3}<span class="meta">${element.downloadsMeta3}</span></a></li>
               </c:if>
               <c:if test="${element.downloadsURL4 != ''}">
-                <li><a href="${element.downloadsURL4}">${element.downloadsText4}<span class="meta">${element.downloadsMeta4}</span></a></li>
+                <li><a href="${downloadsURL4}">${element.downloadsText4}<span class="meta">${element.downloadsMeta4}</span></a></li>
               </c:if>
               <c:if test="${element.downloadsURL5 != ''}">
-                <li><a href="${element.downloadsURL5}">${element.downloadsText5}<span class="meta">${element.downloadsMeta5}</span></a></li>
+                <li><a href="${downloadsURL5}">${element.downloadsText5}<span class="meta">${element.downloadsMeta5}</span></a></li>
               </c:if>
               <c:if test="${element.downloadsURL6 != ''}">
-                <li><a href="${element.downloadsURL6}">${element.downloadsText6}<span class="meta">${element.downloadsMeta6}</span></a></li>
+                <li><a href="${downloadsURL6}">${element.downloadsText6}<span class="meta">${element.downloadsMeta6}</span></a></li>
+              </c:if>
+            </ul>
+        </div>
+    </div>
+    </c:if>
+
+    <script type="text/javascript" src="${urlStatic}/videoplayer/jwplayer6/jwplayer.js"></script>
+    <c:if test="${key != ''}"><script type="text/javascript">jwplayer.key="${key}";</script></c:if>
+    <script type="text/javascript">
+        jwplayer("movie-contentblock-${wmElement.id}").setup({
+            height: ${height},
+            width: ${width},
+            controlbar: 'bottom',
+            <c:if test="${element.gaproEnabled}">ga: {},</c:if>
+            playlist: [{
+	            file: "${videoURL}",
+	            image: "${imageURL}",
+	            <c:if test="${element.captionsEnabled}">
+	            tracks: [{ 
+                    file: "${captionsFiles}", 
+                    label: "${element.captionsLabels}",
+                    kind: "captions",
+                    default: true 
+                }]
+	            </c:if>
+            }]
+        });
+    </script>
+    
+
+  </c:when>
+  <c:otherwise>
+  
+      <h2>Fallback versie 5</h2>
+      
+    <div id="movie-contentblock-${wmElement.id}">
+        <img src="${imageURL}" alt="${element.imageAlt}" width="${width}" height="${height}"/>
+    </div>
+    <c:if test="${element.downloadsEnabled}">
+    <div class="${downloadClass}">
+        <h3><a href="#">${element.downloadTitle}</a></h3>
+        <div>
+            <ul>
+              <c:if test="${element.downloadsURL1 != ''}">
+                <li><a href="${downloadsURL1}">${element.downloadsText1}<span class="meta">${element.downloadsMeta1}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL2 != ''}">
+                <li><a href="${downloadsURL2}">${element.downloadsText2}<span class="meta">${element.downloadsMeta2}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL3 != ''}">
+                <li><a href="${downloadsURL3}">${element.downloadsText3}<span class="meta">${element.downloadsMeta3}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL4 != ''}">
+                <li><a href="${downloadsURL4}">${element.downloadsText4}<span class="meta">${element.downloadsMeta4}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL5 != ''}">
+                <li><a href="${downloadsURL5}">${element.downloadsText5}<span class="meta">${element.downloadsMeta5}</span></a></li>
+              </c:if>
+              <c:if test="${element.downloadsURL6 != ''}">
+                <li><a href="${downloadsURL6}">${element.downloadsText6}<span class="meta">${element.downloadsMeta6}</span></a></li>
               </c:if>
             </ul>
         </div>
@@ -43,9 +157,9 @@
 
     <script type="text/javascript" src="${urlStatic}/videoplayer/jwplayer/jwplayer.js"></script>
     <script type="text/javascript">
-        jwplayer("movie-contentblock").setup({
-            file: "${element.videoURL}",
-            image: "${element.imageURL}",
+        jwplayer("movie-contentblock-${wmElement.id}").setup({
+            file: "${videoURL}",
+            image: "${imageURL}",
             height: ${height},
             width: ${width},
             modes: [
@@ -56,19 +170,23 @@
             controlbar: 'bottom',
             <c:if test="${element.audioDescriptionEnabled || element.captionsEnabled || element.gaproEnabled}">
             plugins: {
-            	<c:if test="${element.gaproEnabled}">
+                <c:if test="${element.gaproEnabled}">
                 "gapro-2": {}<c:if test="${element.captionsEnabled}">,</c:if></c:if>
                 <c:if test="${element.captionsEnabled}">
                 "captions-2": {
-                    files: "${element.captionsFiles}",
+                    files: "${captionsFiles}",
                     labels: "${element.captionsLabels}"
                 }<c:if test="${element.audioDescriptionEnabled}">,</c:if></c:if>
                 <c:if test="${element.audioDescriptionEnabled}">
                 "audiodescription-2": {
-                    file: "${element.audioDescriptionFile}"
+                    file: "${audioDescriptionFile}"
                 }</c:if>
             },
             </c:if>
             dock: false
         });
     </script>
+    
+    
+  </c:otherwise>
+</c:choose>
